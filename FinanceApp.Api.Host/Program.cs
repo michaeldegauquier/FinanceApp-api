@@ -1,10 +1,13 @@
 using FinanceApp.Api.Application;
+using FinanceApp.Api.Application.Interfaces;
 using FinanceApp.Api.Application.Interfaces.Services;
 using FinanceApp.Api.Application.Interfaces.Services.Authentication;
 using FinanceApp.Api.Application.Services;
 using FinanceApp.Api.Application.Services.Authentication;
 using FinanceApp.Api.Domain.Models;
 using FinanceApp.Api.Infrastructure.Persistence;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -61,6 +64,12 @@ builder.Services.AddTransient<IClaimsService, ClaimsService>();
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 
 builder.Services.AddControllers();
+
+// For Fluent validation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<IApplicationDbContext>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
