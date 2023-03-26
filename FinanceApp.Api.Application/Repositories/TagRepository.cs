@@ -14,7 +14,7 @@ namespace FinanceApp.Api.Application.Repositories
             _context = context;
         }
 
-        public async Task<ICollection<Tag>> GetAllTags(string userId)
+        public async Task<ICollection<Tag>> GetAllTags(Guid userId)
         {
             return await _context.Tags
                 .Where(x => x.UserId == userId)

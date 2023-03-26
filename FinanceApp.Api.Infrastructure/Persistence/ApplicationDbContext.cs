@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinanceApp.Api.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>, IApplicationDbContext
     {
         public DbSet<IncomeExpense> IncomesExpenses { get; set; }
         public DbSet<Tag> Tags { get; set; }

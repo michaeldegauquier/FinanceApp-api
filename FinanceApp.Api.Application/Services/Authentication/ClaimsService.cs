@@ -27,6 +27,7 @@ namespace FinanceApp.Api.Application.Services.Authentication
             return new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
         }

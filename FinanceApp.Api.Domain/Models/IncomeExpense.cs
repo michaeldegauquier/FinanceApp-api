@@ -17,7 +17,7 @@ namespace FinanceApp.Api.Domain.Models
         public string Notes { get; set; } = "";
 
         [Required]
-        public string UserId { get; set; } = "";
+        public Guid UserId { get; set; }
         public ApplicationUser? User { get; set; }
 
         public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();

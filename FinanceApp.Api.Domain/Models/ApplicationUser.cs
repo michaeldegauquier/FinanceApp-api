@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FinanceApp.Api.Domain.Models
 {
-    public class ApplicationUser : IdentityUser<string>
+    public class ApplicationUser : IdentityUser<Guid>
     {
         [Required]
         public string FirstName { get; set; } = "";

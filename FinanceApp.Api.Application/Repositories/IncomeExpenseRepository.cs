@@ -14,7 +14,7 @@ namespace FinanceApp.Api.Application.Repositories
             _context = context;
         }
 
-        public async Task<ICollection<IncomeExpense>> GetAllIncomesExpenses(string userId)
+        public async Task<ICollection<IncomeExpense>> GetAllIncomesExpenses(Guid userId)
         {
             return await _context.IncomesExpenses
                 .Where(x => x.UserId == userId)

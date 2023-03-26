@@ -12,7 +12,7 @@ namespace FinanceApp.Api.Domain.Models
         public string Name { get; set; } = "";
 
         [Required]
-        public string UserId { get; set; } = "";
+        public Guid UserId { get; set; }
         public ApplicationUser? User { get; set; }
         public virtual ICollection<IncomeExpense> IncomesExpenses { get; set; } = new List<IncomeExpense>();
         public List<IncomeExpenseTag>? IncomeExpenseTags { get; set; }
