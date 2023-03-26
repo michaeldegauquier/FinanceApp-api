@@ -20,9 +20,4 @@
     <ProjectReference Include="..\FinanceApp.Shared.Core\FinanceApp.Shared.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\Repositories\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

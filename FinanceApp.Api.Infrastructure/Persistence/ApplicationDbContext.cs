@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinanceApp.Api.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>, IApplicationDbContext
     {
-        public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<IncomeExpense> IncomesExpenses { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -17,6 +17,29 @@ namespace FinanceApp.Api.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            BuildModel(builder);
+        }
+
+        private static void BuildModel(ModelBuilder builder)
+        {
+            builder.Entity<IncomeExpense>()
+                .HasMany(p => p.Tags)
+                .WithMany(p => p.IncomesExpenses)
+                .UsingEntity<IncomeExpenseTag>(
+                    j => j
+                        .HasOne(pt => pt.Tag)
+                        .WithMany(t => t.IncomeExpenseTags)
+                        .HasForeignKey(pt => pt.TagId)
+                        .OnDelete(DeleteBehavior.NoAction),
+                    j => j
+                        .HasOne(pt => pt.IncomeExpense)
+                        .WithMany(p => p.IncomeExpenseTags)
+                        .HasForeignKey(pt => pt.IncomeExpenseId)
+                        .OnDelete(DeleteBehavior.NoAction),
+                    j =>
+                    {
+                        j.HasKey(t => new { t.IncomeExpenseId, t.TagId });
+                    });
         }
     }
 }

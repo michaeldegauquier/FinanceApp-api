@@ -5,7 +5,7 @@ namespace FinanceApp.Api.Application.Interfaces
 {
     public interface IApplicationDbContext
     {
-        DbSet<Transaction> Transactions { get; set; }
-        DbSet<Category> Categories { get; set; }
+        DbSet<IncomeExpense> IncomesExpenses { get; set; }
+        DbSet<Tag> Tags { get; set; }
     }
 }

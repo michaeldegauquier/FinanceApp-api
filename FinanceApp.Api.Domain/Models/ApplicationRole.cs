@@ -2,7 +2,7 @@
 
 namespace FinanceApp.Api.Domain.Models
 {
-    public class ApplicationRole : IdentityRole<Guid>
+    public class ApplicationRole : IdentityRole<string>
     {
         public ApplicationRole(string name)
         {
