@@ -1,5 +1,5 @@
 ﻿using FinanceApp.Api.Domain.Models;
-using FinanceApp.Shared.Core.Enums;
+using FinanceApp.Shared.Core.Enums.Responses;
 using FinanceApp.Shared.Core.Factories;
 using FinanceApp.Shared.Core.Responses;
 using MediatR;
@@ -24,7 +24,7 @@ namespace FinanceApp.Api.Application.Handlers.Authentication.Register
             var user = await CreateNewUser(request);
 
             if (user.Succeeded)
-                return ResponseFactory.Create(new RegisterResponse());
+                return ResponseFactory.Success(new RegisterResponse(), SuccessType.Registered);
             return ResponseFactory.Error<RegisterResponse>(ErrorType.UnableToCreateUser);
         }
 

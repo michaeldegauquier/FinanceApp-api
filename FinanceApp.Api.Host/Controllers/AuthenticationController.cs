@@ -1,6 +1,6 @@
 ﻿using FinanceApp.Api.Application.Handlers.Authentication.Login;
 using FinanceApp.Api.Application.Handlers.Authentication.Register;
-using FinanceApp.Shared.Core.Enums;
+using FinanceApp.Shared.Core.Enums.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,8 +28,8 @@ namespace FinanceApp.Api.Host.Controllers
         {
             var result = await _mediator.Send(request);
 
-            if (result.Token == "")
-                return Unauthorized("Username or password is incorrect!");
+            if (result?.Error?.ErrorType == ErrorType.WrongEmailOrPassword)
+                return Unauthorized(result);
 
             return Ok(result);
         }
@@ -45,12 +45,12 @@ namespace FinanceApp.Api.Host.Controllers
         {
             var result = await _mediator.Send(request);
 
-            if (result.Error.ErrorType == ErrorType.UserAlreadyExists)
+            if (result?.Error?.ErrorType == ErrorType.UserAlreadyExists)
                 return Conflict(result);
-            else if (result.Error.ErrorType == ErrorType.UnableToCreateUser) {
+            else if (result?.Error?.ErrorType == ErrorType.UnableToCreateUser) {
                 return BadRequest(result);
             }
-            return Ok(result);
+            return Created("Created", result);
         }
     }
 }

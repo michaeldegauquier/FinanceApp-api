@@ -1,4 +1,4 @@
-﻿using FinanceApp.Shared.Core.Enums;
+﻿using FinanceApp.Shared.Core.Enums.Responses;
 using FinanceApp.Shared.Core.Helpers.EnumHelpers;
 using FinanceApp.Shared.Core.Responses;
 
@@ -6,9 +6,9 @@ namespace FinanceApp.Shared.Core.Factories
 {
     public static class ResponseFactory
     {
-        public static DataResponse<T> Create<T>(T data)
+        public static DataResponse<T> Success<T>(T data, SuccessType successType)
         {
-            return CreateDataResponse(data);
+            return CreateSuccessResponse(data, successType);
         }
 
         public static DataResponse<T> Error<T>(ErrorType errorType)
@@ -16,17 +16,13 @@ namespace FinanceApp.Shared.Core.Factories
             return CreateErrorResponse<T>(errorType);
         }
 
-        private static DataResponse<T> CreateDataResponse<T>(T data)
+        private static DataResponse<T> CreateSuccessResponse<T>(T data, SuccessType successType)
         {
             return new DataResponse<T>
             {
                 Data = data,
-                Error = new Error
-                {
-                    ErrorType = ErrorType.None,
-                    Value = ErrorType.None.ToString(),
-                    Message = EnumReader.GetDescription(ErrorType.None)
-                }
+                Status = successType.GetStatusCode(),
+                Message = successType.GetMessage(),
             };
         }
 
@@ -34,11 +30,12 @@ namespace FinanceApp.Shared.Core.Factories
         {
             return new DataResponse<T>
             {
+                Status = errorType.GetStatusCode(),
+                Message = errorType.GetMessage(),
                 Error = new Error
                 {
                     ErrorType = errorType,
-                    Value = errorType.ToString(),
-                    Message = EnumReader.GetDescription(errorType)
+                    Code = errorType.ToString(),
                 }
             };
         }
