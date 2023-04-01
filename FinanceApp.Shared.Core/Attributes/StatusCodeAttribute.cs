@@ -1,10 +1,12 @@
-﻿namespace FinanceApp.Shared.Core.Attributes
+﻿using System.Net;
+
+namespace FinanceApp.Shared.Core.Attributes
 {
     public class StatusCodeAttribute : Attribute
     {
-        public int StatusCode { get; private set; }
+        public HttpStatusCode StatusCode { get; private set; }
 
-        public StatusCodeAttribute(int statusCode)
+        public StatusCodeAttribute(HttpStatusCode statusCode)
         {
             StatusCode = statusCode;
         }

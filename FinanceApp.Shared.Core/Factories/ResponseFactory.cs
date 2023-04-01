@@ -1,6 +1,6 @@
-﻿using FinanceApp.Shared.Core.Enums.Responses;
-using FinanceApp.Shared.Core.Helpers.EnumHelpers;
+﻿using FinanceApp.Shared.Core.Extensions;
 using FinanceApp.Shared.Core.Responses;
+using FinanceApp.Shared.Core.Responses.Enums;
 
 namespace FinanceApp.Shared.Core.Factories
 {
@@ -17,7 +17,7 @@ namespace FinanceApp.Shared.Core.Factories
         }
 
         private static DataResponse<T> CreateSuccessResponse<T>(T data, SuccessType successType)
-        {
+        { 
             return new DataResponse<T>
             {
                 Data = data,

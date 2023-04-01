@@ -1,4 +1,4 @@
-﻿using FinanceApp.Shared.Core.Enums.Responses;
+﻿using FinanceApp.Shared.Core.Responses.Enums;
 
 namespace FinanceApp.Shared.Core.Responses
 {

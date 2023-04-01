@@ -1,8 +1,8 @@
 ﻿using FinanceApp.Api.Application.Interfaces.Services.Authentication;
 using FinanceApp.Api.Domain.Models;
-using FinanceApp.Shared.Core.Enums.Responses;
 using FinanceApp.Shared.Core.Factories;
 using FinanceApp.Shared.Core.Responses;
+using FinanceApp.Shared.Core.Responses.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;

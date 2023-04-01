@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceApp.Api.Host", "FinanceApp.Api.Host\FinanceApp.Api.Host.csproj", "{09BDD15F-977C-47D4-9651-FCA26A7CCC9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceApp.Api.Host", "FinanceApp.Api.Host\FinanceApp.Api.Host.csproj", "{09BDD15F-977C-47D4-9651-FCA26A7CCC9C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Api", "1-Api", "{1C870090-3244-4F66-B550-91BD3805ADBE}"
 EndProject
@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Shared", "2-Shared", "{C2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Tests", "3-Tests", "{B7B7D9D5-C41B-4251-9CB7-25E5703DC6BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceApp.Api.Domain", "FinanceApp.Api.Domain\FinanceApp.Api.Domain.csproj", "{18DF841C-0BDD-457C-B0D5-4C05A6956170}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceApp.Api.Domain", "FinanceApp.Api.Domain\FinanceApp.Api.Domain.csproj", "{18DF841C-0BDD-457C-B0D5-4C05A6956170}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceApp.Api.Application", "FinanceApp.Api.Application\FinanceApp.Api.Application.csproj", "{DF83FD42-BDF3-4D93-AD97-2577A31F964E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceApp.Api.Application", "FinanceApp.Api.Application\FinanceApp.Api.Application.csproj", "{DF83FD42-BDF3-4D93-AD97-2577A31F964E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceApp.Api.Infrastructure", "FinanceApp.Api.Infrastructure\FinanceApp.Api.Infrastructure.csproj", "{05ED2212-6E9F-467C-A0FB-D8C293682614}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceApp.Api.Infrastructure", "FinanceApp.Api.Infrastructure\FinanceApp.Api.Infrastructure.csproj", "{05ED2212-6E9F-467C-A0FB-D8C293682614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceApp.Shared.Core", "FinanceApp.Shared.Core\FinanceApp.Shared.Core.csproj", "{AA39EA6E-0E0A-4D1C-9AAA-0BF3C4EEFFC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceApp.Shared.Core", "FinanceApp.Shared.Core\FinanceApp.Shared.Core.csproj", "{AA39EA6E-0E0A-4D1C-9AAA-0BF3C4EEFFC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
