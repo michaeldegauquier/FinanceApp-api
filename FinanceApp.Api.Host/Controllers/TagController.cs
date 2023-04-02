@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using FinanceApp.Api.Application.Handlers.Tag.GetAllTags;
+using FinanceApp.Shared.Core.Responses.Enums;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceApp.Api.Host.Controllers
@@ -12,6 +15,17 @@ namespace FinanceApp.Api.Host.Controllers
         public TagController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetAllTags()
+        {
+            var result = await _mediator.Send(new GetAllTagsRequest());
+
+            if (result?.Error?.ErrorType == ErrorType.UserIdNotFound)
+                return Unauthorized(result);
+            return Ok(result);
         }
     }
 }

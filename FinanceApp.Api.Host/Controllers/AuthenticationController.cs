@@ -30,7 +30,6 @@ namespace FinanceApp.Api.Host.Controllers
 
             if (result?.Error?.ErrorType == ErrorType.WrongEmailOrPassword)
                 return Unauthorized(result);
-
             return Ok(result);
         }
 

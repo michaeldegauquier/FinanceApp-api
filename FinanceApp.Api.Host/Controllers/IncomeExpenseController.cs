@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using FinanceApp.Api.Application.Handlers.IncomeExpense.GetAllIncomesExpenses;
+using FinanceApp.Shared.Core.Responses.Enums;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,20 +17,15 @@ namespace FinanceApp.Api.Host.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
         [Authorize]
-        public IActionResult GetUserId()
+        [HttpGet]
+        public async Task<IActionResult> GetAllIncomesExpenses()
         {
-            var user = getUserId();
-            if (user == null)
-                return BadRequest("no userid");
-            return Ok(user);
-        }
+            var result = await _mediator.Send(new GetAllIncomesExpensesRequest());
 
-        // TODO create global method (just a test for now)
-        private string? getUserId()
-        {
-            return HttpContext?.User?.Claims?.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (result?.Error?.ErrorType == ErrorType.UserIdNotFound)
+                return Unauthorized(result);
+            return Ok(result);
         }
     }
 }

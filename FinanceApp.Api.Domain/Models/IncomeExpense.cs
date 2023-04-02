@@ -20,7 +20,7 @@ namespace FinanceApp.Api.Domain.Models
         public Guid UserId { get; set; }
         public ApplicationUser? User { get; set; }
 
-        public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
+        public virtual IEnumerable<Tag> Tags { get; set; } = new List<Tag>();
         public List<IncomeExpenseTag>? IncomeExpenseTags { get; set; }
     }
 }

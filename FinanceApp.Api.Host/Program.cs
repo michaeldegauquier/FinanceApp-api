@@ -1,7 +1,9 @@
 using FinanceApp.Api.Application;
 using FinanceApp.Api.Application.Interfaces;
+using FinanceApp.Api.Application.Interfaces.Repositories;
 using FinanceApp.Api.Application.Interfaces.Services;
 using FinanceApp.Api.Application.Interfaces.Services.Authentication;
+using FinanceApp.Api.Application.Repositories;
 using FinanceApp.Api.Application.Services;
 using FinanceApp.Api.Application.Services.Authentication;
 using FinanceApp.Api.Domain.Models;
@@ -59,9 +61,10 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddTransient<IConfigurationService, ConfigurationService>();
-builder.Services.AddTransient<IClaimsService, ClaimsService>();
-builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddControllers();
 

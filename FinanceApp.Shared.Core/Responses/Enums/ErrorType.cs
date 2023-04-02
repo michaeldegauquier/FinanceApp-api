@@ -11,5 +11,7 @@ namespace FinanceApp.Shared.Core.Responses.Enums
         UserAlreadyExists,
         [StatusCode(HttpStatusCode.BadRequest), Message("Unable to create user, try again later.")]
         UnableToCreateUser,
+        [StatusCode(HttpStatusCode.Unauthorized), Message("No userId found!")]
+        UserIdNotFound,
     }
 }

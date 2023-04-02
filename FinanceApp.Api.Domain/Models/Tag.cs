@@ -14,7 +14,7 @@ namespace FinanceApp.Api.Domain.Models
         [Required]
         public Guid UserId { get; set; }
         public ApplicationUser? User { get; set; }
-        public virtual ICollection<IncomeExpense> IncomesExpenses { get; set; } = new List<IncomeExpense>();
+        public virtual IEnumerable<IncomeExpense> IncomesExpenses { get; set; } = new List<IncomeExpense>();
         public List<IncomeExpenseTag>? IncomeExpenseTags { get; set; }
     }
 }

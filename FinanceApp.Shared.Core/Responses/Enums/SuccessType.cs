@@ -9,5 +9,7 @@ namespace FinanceApp.Shared.Core.Responses.Enums
         LoggedIn,
         [StatusCode(HttpStatusCode.Created), Message("User is successfully registered!")]
         Registered,
+        [StatusCode(HttpStatusCode.OK), Message("Successfully returned data")]
+        DataFound,
     }
 }
