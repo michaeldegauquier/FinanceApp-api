@@ -10,17 +10,5 @@ namespace FinanceApp.Shared.Core.Responses
         public Error? Error { get; set; }
 
         public DataResponse() {}
-
-        public DataResponse(T? data)
-        {
-            Data = data;
-        }
-
-        public DataResponse(HttpStatusCode status, string message, Error? error)
-        {
-            Status = status;
-            Message = message;
-            Error = error;
-        }
     }
 }

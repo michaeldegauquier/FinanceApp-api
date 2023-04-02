@@ -1,11 +1,7 @@
 using FinanceApp.Api.Application;
 using FinanceApp.Api.Application.Interfaces;
-using FinanceApp.Api.Application.Interfaces.Repositories;
 using FinanceApp.Api.Application.Interfaces.Services;
-using FinanceApp.Api.Application.Interfaces.Services.Authentication;
-using FinanceApp.Api.Application.Repositories;
 using FinanceApp.Api.Application.Services;
-using FinanceApp.Api.Application.Services.Authentication;
 using FinanceApp.Api.Domain.Models;
 using FinanceApp.Api.Infrastructure.Persistence;
 using FluentValidation;
@@ -16,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -66,7 +63,8 @@ builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddTransient<IConfigurationService, ConfigurationService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options => options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 
 // For Fluent validation
 builder.Services.AddFluentValidationAutoValidation();
