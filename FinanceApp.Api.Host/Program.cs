@@ -111,6 +111,16 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+// Global Error handling
+if (app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/error-development");
+}
+else
+{
+    app.UseExceptionHandler("/error");
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
