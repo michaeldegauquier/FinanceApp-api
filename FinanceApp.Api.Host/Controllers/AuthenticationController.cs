@@ -1,5 +1,5 @@
-﻿using FinanceApp.Api.Application.Handlers.Authentication.Login;
-using FinanceApp.Api.Application.Handlers.Authentication.Register;
+﻿using FinanceApp.Api.Application.Handlers.AuthenticationHandlers.LoginHandler;
+using FinanceApp.Api.Application.Handlers.AuthenticationHandlers.RegisterHandler;
 using FinanceApp.Shared.Core.Responses.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

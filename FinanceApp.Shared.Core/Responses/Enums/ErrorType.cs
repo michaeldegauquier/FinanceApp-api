@@ -15,5 +15,13 @@ namespace FinanceApp.Shared.Core.Responses.Enums
         UnableToCreateUser,
         [StatusCode(HttpStatusCode.Unauthorized), Message("No userId found!")]
         UserIdNotFound,
+        [StatusCode(HttpStatusCode.NotFound), Message("Item not found!")]
+        ItemNotFound,
+        [StatusCode(HttpStatusCode.UnprocessableEntity), Message("Failed to create item.")]
+        FailedToCreate,
+        [StatusCode(HttpStatusCode.UnprocessableEntity), Message("Failed to update item.")]
+        FailedToUpdate,
+        [StatusCode(HttpStatusCode.UnprocessableEntity), Message("Failed to delete item.")]
+        FailedToDelete,
     }
 }

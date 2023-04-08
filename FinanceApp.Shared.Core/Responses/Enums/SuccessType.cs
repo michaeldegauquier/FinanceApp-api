@@ -9,7 +9,13 @@ namespace FinanceApp.Shared.Core.Responses.Enums
         LoggedIn,
         [StatusCode(HttpStatusCode.Created), Message("User is successfully registered!")]
         Registered,
-        [StatusCode(HttpStatusCode.OK), Message("Successfully returned data.")]
+        [StatusCode(HttpStatusCode.OK), Message("Successfully returned data!")]
         DataFound,
+        [StatusCode(HttpStatusCode.OK), Message("Successfully created item!")]
+        CreatedItem,
+        [StatusCode(HttpStatusCode.OK), Message("Successfully updated item!")]
+        UpdatedItem,
+        [StatusCode(HttpStatusCode.OK), Message("Successfully deleted item!")]
+        DeletedItem,
     }
 }

@@ -1,4 +1,4 @@
-﻿using FinanceApp.Api.Application.Handlers.Error.GetDevelopmentError;
+﻿using FinanceApp.Api.Application.Handlers.ErrorHandlers.GetDevelopmentErrorHandler;
 using FinanceApp.Shared.Core.Factories;
 using FinanceApp.Shared.Core.Responses.Enums;
 using MediatR;

@@ -1,4 +1,4 @@
-﻿using FinanceApp.Api.Application.Handlers.IncomeExpense.GetAllIncomesExpenses;
+﻿using FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.GetAllIncomesExpensesHandler;
 using FinanceApp.Shared.Core.Responses.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

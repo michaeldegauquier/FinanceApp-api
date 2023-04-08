@@ -1,4 +1,4 @@
-﻿using FinanceApp.Api.Application.Common.Dto;
+﻿using FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto;
 
 namespace FinanceApp.Api.Application.Interfaces.Repositories
 {

@@ -41,5 +41,10 @@ namespace FinanceApp.Api.Infrastructure.Persistence
                         j.HasKey(t => new { t.IncomeExpenseId, t.TagId });
                     });
         }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return base.SaveChangesAsync(cancellationToken);
+        }
     }
 }
