@@ -27,7 +27,11 @@ namespace FinanceApp.Api.Application.Handlers.TagHandlers.GetTagByIdHandler
                 return ResponseFactory.Error<GetTagByIdResponse>(ErrorType.UserIdNotFound);
 
             var tag = await _tagRepository.GetTagById(userId, request.Id);
+            return CreateResponse(tag);
+        }
 
+        private static DataResponse<GetTagByIdResponse> CreateResponse(TagDto? tag)
+        {
             if (tag == null)
                 return ResponseFactory.Error<GetTagByIdResponse>(ErrorType.ItemNotFound);
 

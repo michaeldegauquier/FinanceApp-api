@@ -26,6 +26,11 @@ namespace FinanceApp.Api.Application.Handlers.TagHandlers.DeleteTagHandler
                 return ResponseFactory.Error<DeleteTagResponse>(ErrorType.UserIdNotFound);
 
             var result = await _tagRepository.DeleteTag(userId, request.Id, cancellationToken);
+            return CreateResponse(result);
+        }
+
+        private static DataResponse<DeleteTagResponse> CreateResponse(int result)
+        {
             if (result == -1)
                 return ResponseFactory.Error<DeleteTagResponse>(ErrorType.FailedToDelete);
             return ResponseFactory.Success(GetResponse(result), SuccessType.DeletedItem);

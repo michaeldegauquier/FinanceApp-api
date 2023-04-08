@@ -23,5 +23,9 @@ namespace FinanceApp.Shared.Core.Responses.Enums
         FailedToUpdate,
         [StatusCode(HttpStatusCode.UnprocessableEntity), Message("Failed to delete item.")]
         FailedToDelete,
+        [StatusCode(HttpStatusCode.Conflict), Message("Failed to create item because it already exists.")]
+        DuplicateCreateItem,
+        [StatusCode(HttpStatusCode.Conflict), Message("Failed to update item because it already exists.")]
+        DuplicateUpdateItem,
     }
 }

@@ -31,6 +31,13 @@ namespace FinanceApp.Api.Application.Handlers.TagHandlers.CreateTagHandler
                 UserId = userId,
                 Name = request.Name,
             }, cancellationToken);
+            return CreateResponse(result);
+        }
+
+        private static DataResponse<CreateTagResponse> CreateResponse(long result)
+        {
+            if (result == -1)
+                return ResponseFactory.Error<CreateTagResponse>(ErrorType.DuplicateCreateItem);
             return ResponseFactory.Success(GetResponse(result), SuccessType.DataFound);
         }
 

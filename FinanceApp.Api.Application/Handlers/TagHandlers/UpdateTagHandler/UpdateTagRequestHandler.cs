@@ -32,7 +32,14 @@ namespace FinanceApp.Api.Application.Handlers.TagHandlers.UpdateTagHandler
                 Id = request.Id,
                 Name = request.Name,
             }, cancellationToken);
+            return CreateResponse(result);
+        }
+
+        private static DataResponse<UpdateTagResponse> CreateResponse(int result)
+        {
             if (result == -1)
+                return ResponseFactory.Error<UpdateTagResponse>(ErrorType.DuplicateUpdateItem);
+            else if (result == -2)
                 return ResponseFactory.Error<UpdateTagResponse>(ErrorType.FailedToUpdate);
             return ResponseFactory.Success(GetResponse(result), SuccessType.UpdatedItem);
         }

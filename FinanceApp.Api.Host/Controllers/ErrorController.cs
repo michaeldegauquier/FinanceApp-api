@@ -17,6 +17,10 @@ namespace FinanceApp.Api.Host.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Returns a error response with stacktrace for development pruposes only
+        /// </summary>
+        /// <returns>Error response</returns>
         [Route("/error-development")]
         public async Task<IActionResult> ErrorDevelopment()
         {
@@ -29,6 +33,10 @@ namespace FinanceApp.Api.Host.Controllers
             return StatusCode((int)result.Status, result);
         }
 
+        /// <summary>
+        /// Returns error response understandable for end users
+        /// </summary>
+        /// <returns>Error response</returns>
         [Route("error")]
         public IActionResult Error()
         {
