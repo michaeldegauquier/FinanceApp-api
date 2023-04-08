@@ -1,8 +1,9 @@
 ﻿namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto
 {
-    public class CreateIncomeExpenseDto
+    public class UpdateIncomeExpenseDto
     {
         public Guid UserId { get; set; }
+        public long Id { get; set; }
         public DateTime DateCreated { get; set; }
         public double Amount { get; set; }
         public bool IsIncome => Amount >= 0;
