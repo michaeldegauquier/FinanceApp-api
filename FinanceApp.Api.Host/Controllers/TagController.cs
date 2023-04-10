@@ -58,7 +58,7 @@ namespace FinanceApp.Api.Host.Controllers
         }
 
         /// <summary>
-        /// Creates a new tag
+        /// Create a new tag
         /// </summary>
         /// <param name="request"></param>
         /// <returns>TagId</returns>
@@ -76,7 +76,7 @@ namespace FinanceApp.Api.Host.Controllers
         }
 
         /// <summary>
-        /// Updates a tag
+        /// Update a tag
         /// </summary>
         /// <param name="id"></param>
         /// <param name="request"></param>
@@ -98,10 +98,10 @@ namespace FinanceApp.Api.Host.Controllers
         }
 
         /// <summary>
-        /// Deletes a tag
+        /// Delete a tag
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>AMount deleted records</returns>
+        /// <returns>Amount deleted records</returns>
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTag(long id)

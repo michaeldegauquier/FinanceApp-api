@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinanceApp.Api.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230402140810_Initial")]
+    [Migration("20230410200013_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -157,10 +157,10 @@ namespace FinanceApp.Api.Infrastructure.Migrations
 
             modelBuilder.Entity("FinanceApp.Api.Domain.Models.IncomeExpenseTag", b =>
                 {
-                    b.Property<long>("IncomeExpenseId")
+                    b.Property<long?>("IncomeExpenseId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("TagId")
+                    b.Property<long?>("TagId")
                         .HasColumnType("bigint");
 
                     b.HasKey("IncomeExpenseId", "TagId");

@@ -75,5 +75,60 @@ namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository
 
             return incomeExpenseToCreate.Id;
         }
+
+        /// <summary>
+        /// Update one single income/expense for logged-in user
+        /// </summary>
+        /// <param name="updateIncomeExpense"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Amount updated</returns>
+        public async Task<int> UpdateIncomeExpense(UpdateIncomeExpenseDto updateIncomeExpense, CancellationToken cancellationToken)
+        {
+            var incomeExpense = await _context.IncomesExpenses
+                .Where(x => x.UserId == updateIncomeExpense.UserId)
+                .FirstOrDefaultAsync(x => x.Id == updateIncomeExpense.Id);
+
+            if (incomeExpense == null)
+                return -1;
+
+            var newTags = await _context.Tags
+                .Where(x => updateIncomeExpense.Tags.Contains(x.Id))
+                .ToListAsync();
+
+            incomeExpense.Tags.Clear();
+            foreach (var newRole in newTags)
+                incomeExpense.Tags.Add(newRole);
+
+            incomeExpense.DateCreated = updateIncomeExpense.DateCreated;
+            incomeExpense.Amount = updateIncomeExpense.Amount;
+            incomeExpense.Notes = updateIncomeExpense.Notes;
+
+            var result = await _context.SaveChangesAsync(cancellationToken);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Delete one single income/expense for logged-in user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Amount deleted</returns>
+        public async Task<int> DeleteIncomeExpense(Guid userId, long id, CancellationToken cancellationToken)
+        {
+            var incomeExpense = await _context.IncomesExpenses
+                .Where(x => x.UserId == userId)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (incomeExpense == null)
+                return -1;
+
+            _context.IncomesExpenses.Remove(incomeExpense);
+
+            var result = await _context.SaveChangesAsync(cancellationToken);
+
+            return result;
+        }
     }
 }

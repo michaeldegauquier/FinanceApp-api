@@ -31,7 +31,7 @@ namespace FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.CreateIncome
                 UserId = userId,
                 DateCreated = request.DateCreated,
                 Amount = request.Amount,
-                Notes = request.Notes,
+                Notes = request.Notes.Trim(),
                 Tags = request.Tags,
             }, cancellationToken);
 

@@ -1,6 +1,8 @@
 ﻿using FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.CreateIncomeExpenseHandler;
+using FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.DeleteIncomeExpenseHandler;
 using FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.GetAllIncomesExpensesHandler;
 using FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.GetIncomeExpenseByIdHandler;
+using FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.UpdateIncomeExpenseHandler;
 using FinanceApp.Shared.Core.Responses.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -56,18 +58,59 @@ namespace FinanceApp.Api.Host.Controllers
         }
 
         /// <summary>
-        /// Creates a new income/expense
+        /// Create a new income/expense
         /// </summary>
         /// <param name="request"></param>
         /// <returns>IncomeExpenseId</returns>
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> CreateTag([FromBody] CreateIncomeExpenseRequest request)
+        public async Task<IActionResult> CreateIncomeExpense([FromBody] CreateIncomeExpenseRequest request)
         {
             var result = await _mediator.Send(request);
 
             if (result?.Error?.ErrorType == ErrorType.UserIdNotFound)
                 return Unauthorized(result);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Update an income/expense
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns>Amount updated records</returns>
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateIncomeExpense(long id, [FromBody] UpdateIncomeExpenseRequest request)
+        {
+            request.Id = id;
+            var result = await _mediator.Send(request);
+
+            if (result?.Error?.ErrorType == ErrorType.UserIdNotFound)
+                return Unauthorized(result);
+            else if (result?.Error?.ErrorType == ErrorType.FailedToUpdate)
+                return UnprocessableEntity(result);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Delete an income/expense
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Amount deleted records</returns>
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteIncomeExpense(long id)
+        {
+            var result = await _mediator.Send(new DeleteIncomeExpenseRequest
+            {
+                Id = id
+            });
+
+            if (result?.Error?.ErrorType == ErrorType.UserIdNotFound)
+                return Unauthorized(result);
+            else if (result?.Error?.ErrorType == ErrorType.FailedToDelete)
+                return UnprocessableEntity(result);
             return Ok(result);
         }
     }
