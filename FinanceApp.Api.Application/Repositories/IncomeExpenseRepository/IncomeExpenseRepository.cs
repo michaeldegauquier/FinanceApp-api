@@ -21,7 +21,7 @@ namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository
         /// </summary>
         /// <param name="userId"></param>
         /// <returns>List of incomes/expenses</returns>
-        public async Task<IEnumerable<IncomeExpenseDto>> GetAllIncomesExpenses(Guid userId)
+        public async Task<IList<IncomeExpenseDto>> GetAllIncomesExpenses(Guid userId)
         {
             var result = await _context.IncomesExpenses
                 .Include(x => x.Tags)
@@ -85,23 +85,28 @@ namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository
         public async Task<int> UpdateIncomeExpense(UpdateIncomeExpenseDto updateIncomeExpense, CancellationToken cancellationToken)
         {
             var incomeExpense = await _context.IncomesExpenses
+                .Include(x => x.Tags)
                 .Where(x => x.UserId == updateIncomeExpense.UserId)
                 .FirstOrDefaultAsync(x => x.Id == updateIncomeExpense.Id);
 
             if (incomeExpense == null)
                 return -1;
 
-            var newTags = await _context.Tags
-                .Where(x => updateIncomeExpense.Tags.Contains(x.Id))
+            var tagsToRemove = await _context.IncomeExpenseTags
+                .Where(x => x.IncomeExpenseId == updateIncomeExpense.Id && !updateIncomeExpense.Tags.Contains(x.TagId))
                 .ToListAsync();
 
-            incomeExpense.Tags.Clear();
-            foreach (var newRole in newTags)
-                incomeExpense.Tags.Add(newRole);
+            foreach (var tagToRemove in tagsToRemove)
+                _context.IncomeExpenseTags.Remove(tagToRemove);
+
+            var newTags = await _context.Tags
+                .Where(x => x.UserId == updateIncomeExpense.UserId && updateIncomeExpense.Tags.Contains(x.Id))
+                .ToListAsync();
 
             incomeExpense.DateCreated = updateIncomeExpense.DateCreated;
             incomeExpense.Amount = updateIncomeExpense.Amount;
             incomeExpense.Notes = updateIncomeExpense.Notes;
+            incomeExpense.Tags = newTags;
 
             var result = await _context.SaveChangesAsync(cancellationToken);
 
@@ -123,6 +128,13 @@ namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository
 
             if (incomeExpense == null)
                 return -1;
+
+            var tagsToRemove = await _context.IncomeExpenseTags
+                .Where(x => x.IncomeExpenseId == id)
+                .ToListAsync();
+
+            foreach (var tagToRemove in tagsToRemove)
+                _context.IncomeExpenseTags.Remove(tagToRemove);
 
             _context.IncomesExpenses.Remove(incomeExpense);
 

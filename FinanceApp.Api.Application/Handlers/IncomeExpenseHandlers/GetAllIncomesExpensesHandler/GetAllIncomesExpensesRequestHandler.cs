@@ -30,7 +30,7 @@ namespace FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.GetAllIncome
             return ResponseFactory.Success(GetResponse(incomesExpenses), SuccessType.DataFound);
         }
 
-        private static GetAllIncomesExpensesResponse GetResponse(IEnumerable<IncomeExpenseDto> incomesExpenses)
+        private static GetAllIncomesExpensesResponse GetResponse(IList<IncomeExpenseDto> incomesExpenses)
         {
             return new GetAllIncomesExpensesResponse
             {

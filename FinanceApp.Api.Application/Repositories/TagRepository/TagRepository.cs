@@ -21,7 +21,7 @@ namespace FinanceApp.Api.Application.Repositories.TagRepository
         /// </summary>
         /// <param name="userId"></param>
         /// <returns>List of tags</returns>
-        public async Task<IEnumerable<TagDto>> GetAllTags(Guid userId)
+        public async Task<IList<TagDto>> GetAllTags(Guid userId)
         {
             var result = await _context.Tags
                 .Where(x => x.UserId == userId)
@@ -121,6 +121,13 @@ namespace FinanceApp.Api.Application.Repositories.TagRepository
 
             if (tag == null)
                 return -1;
+
+            var tagsToRemove = await _context.IncomeExpenseTags
+                .Where(x => x.TagId == id)
+                .ToListAsync();
+
+            foreach (var tagToRemove in tagsToRemove)
+                _context.IncomeExpenseTags.Remove(tagToRemove);
 
             _context.Tags.Remove(tag);
 

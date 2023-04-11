@@ -7,6 +7,7 @@ namespace FinanceApp.Api.Application.Interfaces
     {
         DbSet<IncomeExpense> IncomesExpenses { get; set; }
         DbSet<Tag> Tags { get; set; }
+        DbSet<IncomeExpenseTag> IncomeExpenseTags { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

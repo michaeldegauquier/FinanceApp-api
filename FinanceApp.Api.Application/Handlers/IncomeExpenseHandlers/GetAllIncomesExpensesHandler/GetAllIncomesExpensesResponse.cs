@@ -4,6 +4,6 @@ namespace FinanceApp.Api.Application.Handlers.IncomeExpenseHandlers.GetAllIncome
 {
     public class GetAllIncomesExpensesResponse
     {
-        public IEnumerable<IncomeExpenseDto> IncomesExpenses { get; set; } = new List<IncomeExpenseDto>();
+        public IList<IncomeExpenseDto> IncomesExpenses { get; set; } = new List<IncomeExpenseDto>();
     }
 }

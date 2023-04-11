@@ -20,6 +20,6 @@ namespace FinanceApp.Api.Domain.Models
         public Guid UserId { get; set; }
         public ApplicationUser? User { get; set; }
         public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
-        public ICollection<IncomeExpenseTag>? IncomeExpenseTags { get; set; }
+        public ICollection<IncomeExpenseTag> IncomeExpenseTags { get; set; } = new List<IncomeExpenseTag>();
     }
 }

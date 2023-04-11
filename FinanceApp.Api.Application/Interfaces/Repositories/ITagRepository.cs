@@ -4,7 +4,7 @@ namespace FinanceApp.Api.Application.Interfaces.Repositories
 {
     public interface ITagRepository
     {
-        Task<IEnumerable<TagDto>> GetAllTags(Guid userId);
+        Task<IList<TagDto>> GetAllTags(Guid userId);
         Task<TagDto?> GetTagById(Guid userId, long id);
         Task<long> CreateTag(CreateTagDto createTag, CancellationToken cancellationToken);
         Task<int> UpdateTag(UpdateTagDto updateTag, CancellationToken cancellationToken);

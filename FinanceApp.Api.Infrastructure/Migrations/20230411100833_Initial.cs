@@ -201,7 +201,7 @@ namespace FinanceApp.Api.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "IncomeExpenseTag",
+                name: "IncomeExpenseTags",
                 columns: table => new
                 {
                     IncomeExpenseId = table.Column<long>(type: "bigint", nullable: false),
@@ -209,14 +209,14 @@ namespace FinanceApp.Api.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IncomeExpenseTag", x => new { x.IncomeExpenseId, x.TagId });
+                    table.PrimaryKey("PK_IncomeExpenseTags", x => new { x.IncomeExpenseId, x.TagId });
                     table.ForeignKey(
-                        name: "FK_IncomeExpenseTag_IncomesExpenses_IncomeExpenseId",
+                        name: "FK_IncomeExpenseTags_IncomesExpenses_IncomeExpenseId",
                         column: x => x.IncomeExpenseId,
                         principalTable: "IncomesExpenses",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_IncomeExpenseTag_Tags_TagId",
+                        name: "FK_IncomeExpenseTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
                         principalColumn: "Id");
@@ -262,8 +262,8 @@ namespace FinanceApp.Api.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IncomeExpenseTag_TagId",
-                table: "IncomeExpenseTag",
+                name: "IX_IncomeExpenseTags_TagId",
+                table: "IncomeExpenseTags",
                 column: "TagId");
 
             migrationBuilder.CreateIndex(
@@ -296,7 +296,7 @@ namespace FinanceApp.Api.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "IncomeExpenseTag");
+                name: "IncomeExpenseTags");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

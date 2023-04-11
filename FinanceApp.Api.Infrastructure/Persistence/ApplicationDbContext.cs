@@ -9,6 +9,7 @@ namespace FinanceApp.Api.Infrastructure.Persistence
     {
         public DbSet<IncomeExpense> IncomesExpenses { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<IncomeExpenseTag> IncomeExpenseTags { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

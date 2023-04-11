@@ -7,6 +7,6 @@
         public double Amount { get; set; }
         public bool IsIncome => Amount >= 0;
         public string Notes { get; set; } = "";
-        public IEnumerable<long> Tags { get; set; } = new List<long>();
+        public IList<long> Tags { get; set; } = new List<long>();
     }
 }

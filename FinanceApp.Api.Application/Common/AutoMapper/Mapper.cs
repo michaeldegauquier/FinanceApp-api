@@ -22,7 +22,7 @@ namespace FinanceApp.Api.Application.Common.AutoMapper
             return _mapper.Map<TDestination>(source);
         }
 
-        public static IEnumerable<TDestination> MapList<TSource, TDestination>(IEnumerable<TSource> sourceList)
+        public static IList<TDestination> MapList<TSource, TDestination>(IEnumerable<TSource> sourceList)
         {
             if (sourceList == null)
                 return new List<TDestination>();

@@ -30,7 +30,7 @@ namespace FinanceApp.Api.Application.Handlers.TagHandlers.GetAllTagsHandler
             return ResponseFactory.Success(GetResponse(tags), SuccessType.DataFound);
         }
 
-        private static GetAllTagsResponse GetResponse(IEnumerable<TagDto> tags)
+        private static GetAllTagsResponse GetResponse(IList<TagDto> tags)
         {
             return new GetAllTagsResponse
             {

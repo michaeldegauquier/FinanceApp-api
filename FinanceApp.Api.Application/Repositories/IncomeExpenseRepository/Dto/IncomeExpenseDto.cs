@@ -9,6 +9,6 @@ namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto
         public double Amount { get; set; }
         public bool IsIncome => Amount >= 0;
         public string Notes { get; set; } = "";
-        public IEnumerable<TagDto> Tags { get; set; } = new List<TagDto>();
+        public IList<TagDto> Tags { get; set; } = new List<TagDto>();
     }
 }

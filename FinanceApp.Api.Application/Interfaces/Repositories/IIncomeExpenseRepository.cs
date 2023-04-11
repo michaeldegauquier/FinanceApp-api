@@ -4,7 +4,7 @@ namespace FinanceApp.Api.Application.Interfaces.Repositories
 {
     public interface IIncomeExpenseRepository
     {
-        Task<IEnumerable<IncomeExpenseDto>> GetAllIncomesExpenses(Guid userId);
+        Task<IList<IncomeExpenseDto>> GetAllIncomesExpenses(Guid userId);
         Task<IncomeExpenseDto?> GetIncomeExpenseById(Guid userId, long id);
         Task<long> CreateIncomeExpense(CreateIncomeExpenseDto createIncomeExpense, CancellationToken cancellationToken);
         Task<int> UpdateIncomeExpense(UpdateIncomeExpenseDto updateIncomeExpense, CancellationToken cancellationToken);

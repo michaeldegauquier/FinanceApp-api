@@ -15,6 +15,6 @@ namespace FinanceApp.Api.Domain.Models
         public Guid UserId { get; set; }
         public ApplicationUser? User { get; set; }
         public ICollection<IncomeExpense> IncomesExpenses { get; set; } = new List<IncomeExpense>();
-        public ICollection<IncomeExpenseTag>? IncomeExpenseTags { get; set; }
+        public ICollection<IncomeExpenseTag> IncomeExpenseTags { get; set; } = new List<IncomeExpenseTag>();
     }
 }
