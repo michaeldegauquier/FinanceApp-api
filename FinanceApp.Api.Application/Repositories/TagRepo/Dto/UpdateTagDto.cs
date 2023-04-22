@@ -1,4 +1,4 @@
-﻿namespace FinanceApp.Api.Application.Repositories.TagRepository.Dto
+﻿namespace FinanceApp.Api.Application.Repositories.TagRepo.Dto
 {
     public class UpdateTagDto
     {

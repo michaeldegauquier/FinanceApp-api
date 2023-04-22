@@ -14,6 +14,7 @@ namespace FinanceApp.Api.Domain.Models
         public double Amount { get; set; }
         [Required]
         public bool IsIncome => Amount >= 0;
+        [MaxLength(250)]
         public string Notes { get; set; } = "";
 
         [Required]

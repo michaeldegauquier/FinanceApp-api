@@ -1,6 +1,6 @@
-﻿using FinanceApp.Api.Application.Repositories.TagRepository.Dto;
+﻿using FinanceApp.Api.Application.Repositories.TagRepo.Dto;
 
-namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto
+namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepo.Dto
 {
     public class IncomeExpenseDto
     {

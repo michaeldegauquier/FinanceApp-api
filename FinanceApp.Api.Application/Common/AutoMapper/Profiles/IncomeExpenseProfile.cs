@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto;
+using FinanceApp.Api.Application.Repositories.IncomeExpenseRepo.Dto;
 using FinanceApp.Api.Domain.Models;
 
 namespace FinanceApp.Api.Application.Common.AutoMapper.Profiles

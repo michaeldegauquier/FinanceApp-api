@@ -1,6 +1,6 @@
 ﻿using FinanceApp.Api.Application.Interfaces.Repositories;
 using FinanceApp.Api.Application.Interfaces.Services.Authentication;
-using FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto;
+using FinanceApp.Api.Application.Repositories.IncomeExpenseRepo.Dto;
 using FinanceApp.Shared.Core.Factories;
 using FinanceApp.Shared.Core.Responses;
 using FinanceApp.Shared.Core.Responses.Enums;

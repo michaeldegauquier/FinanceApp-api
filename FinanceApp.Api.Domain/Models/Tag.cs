@@ -8,7 +8,7 @@ namespace FinanceApp.Api.Domain.Models
     {
         [Key]
         public long Id { get; set; }
-        [Required]
+        [Required, MinLength(1), MaxLength(20)]
         public string Name { get; set; } = "";
 
         [Required]

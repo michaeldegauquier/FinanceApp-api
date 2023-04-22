@@ -1,4 +1,4 @@
-﻿namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto
+﻿namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepo.Dto
 {
     public class UpdateIncomeExpenseDto
     {

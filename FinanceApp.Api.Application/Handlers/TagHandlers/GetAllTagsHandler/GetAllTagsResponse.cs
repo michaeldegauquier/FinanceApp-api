@@ -1,4 +1,4 @@
-﻿using FinanceApp.Api.Application.Repositories.TagRepository.Dto;
+﻿using FinanceApp.Api.Application.Repositories.TagRepo.Dto;
 
 namespace FinanceApp.Api.Application.Handlers.TagHandlers.GetAllTagsHandler
 {

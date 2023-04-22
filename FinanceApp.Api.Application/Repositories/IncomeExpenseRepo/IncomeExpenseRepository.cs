@@ -1,11 +1,11 @@
 ﻿using FinanceApp.Api.Application.Common.AutoMapper;
 using FinanceApp.Api.Application.Interfaces;
 using FinanceApp.Api.Application.Interfaces.Repositories;
-using FinanceApp.Api.Application.Repositories.IncomeExpenseRepository.Dto;
+using FinanceApp.Api.Application.Repositories.IncomeExpenseRepo.Dto;
 using FinanceApp.Api.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepository
+namespace FinanceApp.Api.Application.Repositories.IncomeExpenseRepo
 {
     public class IncomeExpenseRepository : IIncomeExpenseRepository
     {

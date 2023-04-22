@@ -1,11 +1,11 @@
 ﻿using FinanceApp.Api.Application.Common.AutoMapper;
 using FinanceApp.Api.Application.Interfaces;
 using FinanceApp.Api.Application.Interfaces.Repositories;
-using FinanceApp.Api.Application.Repositories.TagRepository.Dto;
+using FinanceApp.Api.Application.Repositories.TagRepo.Dto;
 using FinanceApp.Api.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceApp.Api.Application.Repositories.TagRepository
+namespace FinanceApp.Api.Application.Repositories.TagRepo
 {
     public class TagRepository : ITagRepository
     {
