@@ -25,7 +25,7 @@ namespace FinanceApp.Api.Application.Repositories.TagRepo
         {
             var result = await _context.Tags
                 .Where(x => x.UserId == userId)
-                .OrderByDescending(x => x.Name)
+                .OrderBy(x => x.Name)
                 .ToListAsync();
 
             return Mapper.MapList<Tag, TagDto>(result);

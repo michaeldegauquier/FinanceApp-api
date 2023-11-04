@@ -7,9 +7,9 @@ namespace FinanceApp.Api.Infrastructure.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>, IApplicationDbContext
     {
-        public DbSet<IncomeExpense> IncomesExpenses { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<IncomeExpenseTag> IncomeExpenseTags { get; set; }
+        public virtual DbSet<IncomeExpense> IncomesExpenses { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<IncomeExpenseTag> IncomeExpenseTags { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
